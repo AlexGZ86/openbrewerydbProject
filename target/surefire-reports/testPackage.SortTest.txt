@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: testPackage.SortTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 8.892 sec <<< FAILURE!
+sortWithInvalid(testPackage.SortTest)  Time elapsed: 0.001 sec  <<< FAILURE!
+java.lang.AssertionError: The following asserts failed:
+	expected [null] but found [io.restassured.internal.RestAssuredResponseImpl@4d6f623d]
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:43)
+	at testPackage.SortTest.sortWithInvalid(SortTest.java:75)
+
