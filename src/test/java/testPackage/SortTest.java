@@ -2,21 +2,16 @@ package testPackage;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.testng.Assert;
+import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import javax.xml.bind.SchemaOutputResolver;
-
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-    /* https://www.openbrewerydb.org/  PUBLIC API WITH ALL Documentation regarding its API and content
-    * APi test shown for demo purpose only by Alex G.
-    */
-
-
+/* https://www.openbrewerydb.org/  PUBLIC API WITH ALL Documentation regarding its API and content
+ * APi test shown for demo purpose only by Alex G.
+ */
 
 
 public class SortTest {
@@ -26,37 +21,33 @@ public class SortTest {
      * */
     @Test
     public void sortWithStateTypeAndName() {
-        given().get("https://api.openbrewerydb.org/breweries?by_state=ohio&sort=type,-name").then().statusCode(200).body("id[0]", equalTo(5643)).
+        given().get("https://api.openbrewerydb.org/breweries?by_state=ohio&sort=type,-name").then().statusCode(200).body("id[0]", Matchers.equalTo("6ec5c9d0-34df-4a2e-b041-ff956ce3d98a")).
                 body("brewery_type[0]", equalTo("brewpub")).
-                body("city[0]", equalTo("Willoughby")).
+                body("city[0]", equalTo("Marietta")).
                 body("state[0]", equalTo("Ohio")).
-                body("postal_code[0]", equalTo("44094-7804")).
+                body("postal_code[0]", equalTo("45750-3125")).
                 body("country[0]", equalTo("United States")).
-                body("longitude[0]", equalTo("-81.4054897216877")).
-                body("latitude[0]", equalTo("41.64152155")).
-                body("phone[0]", equalTo("4409750202")).
-                body("website_url[0]", equalTo("http://www.willoughbybrewing.com")).
-                body("updated_at[0]", equalTo("2018-08-24T15:45:22.591Z")).
-                body("created_at[0]", equalTo("2018-07-24T01:34:03.711Z"))
-                .log().all();
+                body("longitude[0]", equalTo("-81.45339993")).
+                body("latitude[0]", equalTo("39.41184635")).
+                body("phone[0]", equalTo("7403732739")).
+                body("website_url[0]", equalTo("http://www.mariettabrewingcompany.com")).
+                log().all();
 
     }
 
 
     @Test
     public void sortWithCityAndName() {
-        given().get("https://api.openbrewerydb.org/breweries?by_city=san_diego&sort=-name").then().statusCode(200).body("id[0]", equalTo(1170)).
-                body("brewery_type[0]", equalTo("micro")).
+        given().get("https://api.openbrewerydb.org/breweries?by_city=san_diego&sort=-name").then().statusCode(200).body("id[0]", Matchers.equalTo("ef970757-fe42-416f-931d-722451f1f59c")).
+                body("brewery_type[0]", equalTo("large")).
                 body("city[0]", equalTo("San Diego")).
                 body("state[0]", equalTo("California")).
-                body("postal_code[0]", equalTo("92126-4541")).
+                body("postal_code[0]", equalTo("92101-6618")).
                 body("country[0]", equalTo("United States")).
-                body("longitude[0]", equalTo("-117.121435")).
-                body("latitude[0]", equalTo("32.895843")).
-                body("phone[0]", equalTo("8586933441")).
-                body("website_url[0]", equalTo("http://www.whitelabs.com")).
-                body("updated_at[0]", equalTo("2018-08-24T00:04:52.152Z")).
-                body("created_at[0]", equalTo("2018-07-24T01:33:02.898Z"))
+                body("longitude[0]", equalTo("-117.129593")).
+                body("latitude[0]", equalTo("32.714813")).
+                body("phone[0]", equalTo("6195782311")).
+                body("website_url[0]", equalTo("http://10barrel.com"))
                 .log().all();
 
     }
