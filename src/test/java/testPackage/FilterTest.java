@@ -20,28 +20,6 @@ public class FilterTest {
     * console will show the data expected and that was validated.
      */
 
-
-
-//    @Test
-//    public void filterFromTypeMicro() {
-//        given().get("https://api.openbrewerydb.org/breweries?by_type=micro").then().statusCode(200).body("id[0]", equalTo(2)).
-//                body("name[0]", equalTo("Avondale Brewing Co")).
-//                body("city[0]", equalTo("Birmingham")).
-//                body("state[0]", equalTo("Alabama")).
-//                body("postal_code[0]", equalTo("35222-1932")).
-//                body("country[0]", equalTo("United States")).
-//                body("longitude[0]", equalTo("-86.774322")).
-//                body("latitude[0]", equalTo("33.524521")).
-//                body("phone[0]", equalTo("2057775456")).
-//                body("website_url[0]", equalTo("http://www.avondalebrewing.com")).
-//                body("updated_at[0]", equalTo("2018-08-23T23:19:57.825Z")).
-//                body("created_at[0]", equalTo("2018-07-24T01:32:47.255Z"))
-//                .log().all();
-//    }
-
-    /*
-    / *No records from Type 'nano' exist  -this should fail as expected
-    */
     @Test
     public void filterFromTypeNano() {
         given().get("https://api.openbrewerydb.org/breweries?by_type=nano").then().statusCode(200)
@@ -73,23 +51,23 @@ public class FilterTest {
         SoftAssert softAssert = new SoftAssert();
         Response response = RestAssured.get("https://api.openbrewerydb.org/breweries?by_type=brewpub");
         System.out.println(response.getBody().jsonPath().get("[0].id").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].id").toString().replace("[", "").replace("]", ""), "104", "Id is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].id").toString().replace("[", "").replace("]", ""), "58293321-14ae-49d7-9a7b-08436c9e63a6", "Id is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].name").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].name").toString().replace("[", "").replace("]", ""), "BJs Restaurant & Brewery - Chandler", "Name is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].name").toString().replace("[", "").replace("]", ""), "1188 Brewing Co", "Name is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].brewery_type").toString().replace("[", "").replace("]", ""));
         softAssert.assertEquals(response.getBody().jsonPath().get("[0].brewery_type").toString().replace("[", "").replace("]", ""), "brewpub", "brewery_type is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].street").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].street").toString().replace("[", "").replace("]", ""), "3155 W Chandler Blvd", "street is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].street").toString().replace("[", "").replace("]", ""), "141 E Main St", "street is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].city").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].city").toString().replace("[", "").replace("]", ""), "Chandler", "city is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].city").toString().replace("[", "").replace("]", ""), "John Day", "city is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].state").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].state").toString().replace("[", "").replace("]", ""), "Arizona", "state is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].state").toString().replace("[", "").replace("]", ""), "Oregon", "state is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].postal_code").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].postal_code").toString().replace("[", "").replace("]", ""), "85226-5175", "postal_code is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].postal_code").toString().replace("[", "").replace("]", ""), "97845-1210", "postal_code is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].country").toString().replace("[", "").replace("]", ""));
         softAssert.assertEquals(response.getBody().jsonPath().get("[0].country").toString().replace("[", "").replace("]", ""), "United States", "country is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].phone").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].phone").toString().replace("[", "").replace("]", ""), "4809170631", "phone is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].phone").toString().replace("[", "").replace("]", ""), "5415751188", "phone is not equal");
         System.out.println(response.getStatusCode());
         softAssert.assertEquals(response.getStatusCode(), 200, "Status code not equal");
         softAssert.assertAll();
@@ -106,17 +84,17 @@ public class FilterTest {
         System.out.println(response.getBody().jsonPath().get("[0].brewery_type").toString().replace("[", "").replace("]", ""));
         softAssert.assertEquals(response.getBody().jsonPath().get("[0].brewery_type").toString().replace("[", "").replace("]", ""), "large", "brewery_type is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].street").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].street").toString().replace("[", "").replace("]", ""), "830 W Bannock St", "street is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].street").toString().replace("[", "").replace("]", ""), "1501 E St", "street is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].city").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].city").toString().replace("[", "").replace("]", ""), "Boise", "city is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].city").toString().replace("[", "").replace("]", ""), "San Diego", "city is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].state").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].state").toString().replace("[", "").replace("]", ""), "Idaho", "state is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].state").toString().replace("[", "").replace("]", ""), "California", "state is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].postal_code").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].postal_code").toString().replace("[", "").replace("]", ""), "83702-5857", "postal_code is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].postal_code").toString().replace("[", "").replace("]", ""), "92101-6618", "postal_code is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].country").toString().replace("[", "").replace("]", ""));
         softAssert.assertEquals(response.getBody().jsonPath().get("[0].country").toString().replace("[", "").replace("]", ""), "United States", "country is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].phone").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].phone").toString().replace("[", "").replace("]", ""), "5416785228", "phone is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].phone").toString().replace("[", "").replace("]", ""), "6195782311", "phone is not equal");
         System.out.println(response.getStatusCode());
         softAssert.assertEquals(response.getStatusCode(), 200, "Status code not equal");
         softAssert.assertAll();
@@ -143,23 +121,23 @@ public class FilterTest {
         SoftAssert softAssert = new SoftAssert();
         Response response = RestAssured.get("https://api.openbrewerydb.org/breweries?by_type=bar");
         System.out.println(response.getBody().jsonPath().get("[0].id").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].id").toString().replace("[", "").replace("]", ""), "4266", "Id is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].id").toString().replace("[", "").replace("]", ""), "b3bea277-345d-4154-9a79-1c9364ee0172", "Id is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].name").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].name").toString().replace("[", "").replace("]", ""), "Matties", "Name is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].name").toString().replace("[", "").replace("]", ""), "Aloha Sea Sports Centre", "Name is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].brewery_type").toString().replace("[", "").replace("]", ""));
         softAssert.assertEquals(response.getBody().jsonPath().get("[0].brewery_type").toString().replace("[", "").replace("]", ""), "bar", "brewery_type is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].street").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].street").toString().replace("[", "").replace("]", ""), "2535 Mountain City Hwy", "street is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].street").toString().replace("[", "").replace("]", ""), "1212 East Coast Parkway", "street is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].city").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].city").toString().replace("[", "").replace("]", ""), "Elko", "city is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].city").toString().replace("[", "").replace("]", ""), "Singapore", "city is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].state").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].state").toString().replace("[", "").replace("]", ""), "Nevada", "state is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].state").toString().replace("[", "").replace("]", ""), "Singapore", "state is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].postal_code").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].postal_code").toString().replace("[", "").replace("]", ""), "89801-4496", "postal_code is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].postal_code").toString().replace("[", "").replace("]", ""), "449886", "postal_code is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].country").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].country").toString().replace("[", "").replace("]", ""), "United States", "country is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].country").toString().replace("[", "").replace("]", ""), "Singapore", "country is not equal");
         System.out.println(response.getBody().jsonPath().get("[0].phone").toString().replace("[", "").replace("]", ""));
-        softAssert.assertEquals(response.getBody().jsonPath().get("[0].phone").toString().replace("[", "").replace("]", ""), "7757535100", "phone is not equal");
+        softAssert.assertEquals(response.getBody().jsonPath().get("[0].phone").toString().replace("[", "").replace("]", ""), "+65 6241 9212", "phone is not equal");
         System.out.println(response.getStatusCode());
         softAssert.assertEquals(response.getStatusCode(), 200, "Status code not equal");
         softAssert.assertAll();
